@@ -95,26 +95,34 @@ public class CheckliteSolution {
         		}
         	}
         }
-        List<Discount> freebeeDiscounts = obtainFreebeeDiscounts(basket);
+        Map<String,Integer> freebeeDiscounts = obtainFreebeeDiscounts(basket);
         Integer basketTotal = Integer.valueOf(0);
         for( Entry<String,Integer> lineItem : basket.entrySet()) {
-        	basketTotal += calculateLineItemCost(lineItem);
+        	basketTotal += calculateLineItemCost(lineItem, freebeeDiscounts);
         }
         return basketTotal;
     }
-	private List<Discount> obtainFreebeeDiscounts(Map<String, Integer> basket) {
+	private Map<String,Integer> obtainFreebeeDiscounts(Map<String, Integer> basket) {
 		//if stockitem.discount.multiple >= lineItemValue
 		//then option to apply freebee to stockitem.discount.freebee (target sku)
+		Map<String,Integer> freeSkus = new HashMap<>();
 		for( Entry<String,Integer> lineItem : basket.entrySet()) {
 			List<Discount> itemDiscounts = catalogue.get(lineItem.getKey()).getDiscounts();
-//			if( lineItem.getValue() >= catalogue.get(lineItem.getKey()).getDiscounts())
+			for( Discount discount :itemDiscounts) {
+				if ( !discount.getFreeSku().isEmpty() ) {
+					Integer maxFreeSkus = lineItem.getValue()/discount.getMultiple();
+					if ( maxFreeSkus > 0) {
+						freeSkus.put(lineItem.getKey(), maxFreeSkus);
+					}
+				}
+			}
 		}
-		return null;
+		return freeSkus;
 	}
 
-	private Integer calculateLineItemCost(Entry<String, Integer> lineItem) {
+	private Integer calculateLineItemCost(Entry<String, Integer> lineItem, Map<String, Integer> freebeeDiscounts) {
 		if (catalogue.get(lineItem.getKey()).getDiscounts() != null){
-			return calculateBestLineItemDiscount (lineItem);
+			return calculateBestLineItemDiscount (lineItem, freebeeDiscounts);
 		}
 		else {
 			return lineItem.getValue() * catalogue.get(lineItem.getKey()).getPrice();
@@ -151,3 +159,4 @@ public class CheckliteSolution {
 	}
 
 }
+
