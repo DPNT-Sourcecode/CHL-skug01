@@ -34,23 +34,24 @@ public class CheckliteSolution {
 			return discount;
 		}
 		private Integer price;
-		private Discount discount;
+		private List<Discount> discount;
 		public StockItem(String sku, Integer price, List<Discount> discounts) {
 			this.sku = sku;
 			this.price = price;
-			this.discount = discount;
+			List<Discount> thisList = new ArrayList<>();
+			thisList.addAll(discounts);
 		}
-		public String toString() {
-			return this.sku + ":" + this.price + ":" +
-							((this.discount != null) ? this.discount.getMultiple() + ":" + this.discount.getCost()
-							: "");
-		}
+//		public String toString() {
+//			return this.sku + ":" + this.price + ":" +
+//							((this.discount != null) ? this.discount.getMultiple() + ":" + this.discount.getCost()
+//							: "");
+//		}
 	}
 	private Map<String,StockItem> catalogue = new HashMap<>();
 	public CheckliteSolution() {
 		List<Discount> aDiscounts = new ArrayList<>();
 		aDiscounts.add(new Discount( 3, 130));
-		aDiscounts.add(new Discount( 3, 130));
+		aDiscounts.add(new Discount( 5, 200));
 		catalogue.put("A", new StockItem("A", 50, aDiscounts)));
 		//System.out.println(catalogue.get("A").toString());
 		catalogue.put("B", new StockItem("B", 30, new Discount( 2, 45)));
@@ -103,4 +104,5 @@ public class CheckliteSolution {
 	}
 
 }
+
 
