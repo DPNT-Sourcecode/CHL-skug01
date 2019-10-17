@@ -112,7 +112,7 @@ public class CheckliteSolution {
 				if ( !discount.getFreeSku().isEmpty() ) {
 					Integer maxFreeSkus = lineItem.getValue()/discount.getMultiple();
 					if ( maxFreeSkus > 0) {
-						freeSkus.put(lineItem.getKey(), maxFreeSkus);
+						freeSkus.put(discount.getFreeSku(), maxFreeSkus);
 					}
 				}
 			}
@@ -165,5 +165,6 @@ public class CheckliteSolution {
 	}
 
 }
+
 
 
