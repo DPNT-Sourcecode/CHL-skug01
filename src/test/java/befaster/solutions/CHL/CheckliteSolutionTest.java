@@ -46,11 +46,12 @@ public class CheckliteSolutionTest {
         //System.out.println(checkliteSolution.checklite("ABABCD"));
     }
     @Test
+    public void testAAAAA() {
+        assertEquals(checkliteSolution.checklite("AAAAA"),Integer.valueOf(130+50+50));
+        System.out.println(checkliteSolution.checklite("AAAAA"));
+    }
+    @Test
     public void test_() {
         assertEquals(checkliteSolution.checklite("_"),Integer.valueOf(-1));
     }
 }
-
-
-
-
