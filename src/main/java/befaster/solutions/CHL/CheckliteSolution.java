@@ -129,11 +129,17 @@ public class CheckliteSolution {
 		}
 	}
 	
-	private Integer calculateBestLineItemDiscount (Entry<String, Integer> lineItem) {
+	private Integer calculateBestLineItemDiscount (Entry<String, Integer> lineItem, 
+												Map<String, Integer> freebeeDiscounts) {
 		List<Discount> itemDiscounts = catalogue.get(lineItem.getKey()).getDiscounts();
-
 		//set basic price
 		Integer currentPrice = lineItem.getValue() * catalogue.get(lineItem.getKey()).getPrice();
+		
+		if ( freebeeDiscounts.containsKey(lineItem.getKey()))
+		{
+			Integer remainingItems = lineItem.getValue() - freebeeDiscounts.get(lineItem.getKey());
+			currentPrice = remainingItems * catalogue.get(lineItem.getKey()).getPrice();
+		}
 		
 		for (Discount discount : itemDiscounts) {
 			if( discount.getFreeSku().isEmpty())
@@ -159,4 +165,5 @@ public class CheckliteSolution {
 	}
 
 }
+
 
