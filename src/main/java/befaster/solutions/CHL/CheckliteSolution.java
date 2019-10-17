@@ -45,7 +45,6 @@ public class CheckliteSolution {
 		}
 	}
 	private Map<String,StockItem> catalogue = new HashMap<>();
-	
 	public CheckliteSolution() {
 		catalogue.put("A", new StockItem("A", 50, new Discount( 3, 130)));
 		//System.out.println(catalogue.get("A").toString());
@@ -62,6 +61,9 @@ public class CheckliteSolution {
         for (int i = 0; i < skus.length(); i++) {
         	String key = skus.substring(i,i+1);
         	//System.out.print(key);
+        	if (!catalogue.keySet().contains(key)) {
+        		return Integer.valueOf(-1);
+        	}
         	if ( catalogue.containsKey(key)){
         		if (!basket.containsKey(key)) {
         			basket.put(key, Integer.valueOf(1));
@@ -96,6 +98,7 @@ public class CheckliteSolution {
 	}
 
 }
+
 
 
 
