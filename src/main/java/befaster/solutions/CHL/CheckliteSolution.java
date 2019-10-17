@@ -11,15 +11,15 @@ public class CheckliteSolution {
 	private static class Discount {
 		private Integer multiple;
 		private Integer cost;
-		private String freebee = "";
+		private String freeSku = "";
 		public Integer getMultiple() {
 			return multiple;
 		}
 		public Integer getCost() {
 			return cost;
 		}
-		public String getFreebee() {
-			return freebee;
+		public String getFreeSku() {
+			return freeSku;
 		}
 		public Discount(Integer multiple, Integer cost) {
 			this.multiple = multiple;
@@ -27,7 +27,7 @@ public class CheckliteSolution {
 		}
 		public Discount(Integer multiple, Integer cost, String freebee) {
 			this(multiple,cost);
-			this.freebee = freebee;
+			this.freeSku = freebee;
 		}
 		
 	}
@@ -95,12 +95,23 @@ public class CheckliteSolution {
         		}
         	}
         }
+        List<Discount> freebeeDiscounts = obtainFreebeeDiscounts(basket);
         Integer basketTotal = Integer.valueOf(0);
         for( Entry<String,Integer> lineItem : basket.entrySet()) {
         	basketTotal += calculateLineItemCost(lineItem);
         }
         return basketTotal;
     }
+	private List<Discount> obtainFreebeeDiscounts(Map<String, Integer> basket) {
+		//if stockitem.discount.multiple >= lineItemValue
+		//then option to apply freebee to stockitem.discount.freebee (target sku)
+		for( Entry<String,Integer> lineItem : basket.entrySet()) {
+			List<Discount> itemDiscounts = catalogue.get(lineItem.getKey()).getDiscounts();
+//			if( lineItem.getValue() >= catalogue.get(lineItem.getKey()).getDiscounts())
+		}
+		return null;
+	}
+
 	private Integer calculateLineItemCost(Entry<String, Integer> lineItem) {
 		if (catalogue.get(lineItem.getKey()).getDiscounts() != null){
 			return calculateBestLineItemDiscount (lineItem);
@@ -117,7 +128,7 @@ public class CheckliteSolution {
 		Integer currentPrice = lineItem.getValue() * catalogue.get(lineItem.getKey()).getPrice();
 		
 		for (Discount discount : itemDiscounts) {
-			if( discount.getFreebee().isEmpty())
+			if( discount.getFreeSku().isEmpty())
 			{
 				Integer discountedPrice = calculateLineItemDiscount(lineItem, discount);
 				if ( discountedPrice < currentPrice ) {
@@ -140,4 +151,5 @@ public class CheckliteSolution {
 	}
 
 }
+
 
