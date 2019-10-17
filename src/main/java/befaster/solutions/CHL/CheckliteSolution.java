@@ -1,6 +1,8 @@
 package befaster.solutions.CHL;
 
+import java.util.ArrayList;
 import java.util.HashMap;
+import java.util.List;
 import java.util.Map;
 import java.util.Map.Entry;
 
@@ -28,12 +30,12 @@ public class CheckliteSolution {
 		public Integer getPrice() {
 			return price;
 		}
-		public Discount getDiscount() {
+		public List<Discount> getDiscounts() {
 			return discount;
 		}
 		private Integer price;
 		private Discount discount;
-		public StockItem(String sku, Integer price, Discount discount) {
+		public StockItem(String sku, Integer price, List<Discount> discounts) {
 			this.sku = sku;
 			this.price = price;
 			this.discount = discount;
@@ -46,7 +48,10 @@ public class CheckliteSolution {
 	}
 	private Map<String,StockItem> catalogue = new HashMap<>();
 	public CheckliteSolution() {
-		catalogue.put("A", new StockItem("A", 50, new Discount( 3, 130)));
+		List<Discount> aDiscounts = new ArrayList<>();
+		aDiscounts.add(new Discount( 3, 130));
+		aDiscounts.add(new Discount( 3, 130));
+		catalogue.put("A", new StockItem("A", 50, aDiscounts)));
 		//System.out.println(catalogue.get("A").toString());
 		catalogue.put("B", new StockItem("B", 30, new Discount( 2, 45)));
 		//System.out.println(catalogue.get("B").toString());
@@ -98,3 +103,4 @@ public class CheckliteSolution {
 	}
 
 }
+
