@@ -10,6 +10,12 @@ public class CheckliteSolution {
 
 	private static class Discount {
 		private Integer multiple;
+		public Integer getMultiple() {
+			return multiple;
+		}
+		public Integer getCost() {
+			return cost;
+		}
 		private Integer cost;
 		public Discount(Integer multiple, Integer cost) {
 			this.multiple = multiple;
@@ -18,6 +24,15 @@ public class CheckliteSolution {
 	}
 	private static class StockItem{
 		private String sku;
+		public String getSku() {
+			return sku;
+		}
+		public Integer getPrice() {
+			return price;
+		}
+		public Discount getDiscount() {
+			return discount;
+		}
 		private Integer price;
 		private Discount discount;
 		public StockItem(String sku, Integer price, Discount discount) {
@@ -53,9 +68,16 @@ public class CheckliteSolution {
         }
         return basketTotal;
     }
-	private Integer calculateLineItemCost(Map.Entry<String,Integer>) {
-		// TODO Auto-generated method stub
-		return null;
+	private Integer calculateLineItemCost(Entry<String, Integer> lineItem) {
+		if (catalogue.get(lineItem.getKey()).discount != null){
+			return null;
+		}
+		else {
+			return lineItem.getValue() * catalogue.get(lineItem.getKey()).getPrice();
+		}
+			
 	}
+
 }
+
 
