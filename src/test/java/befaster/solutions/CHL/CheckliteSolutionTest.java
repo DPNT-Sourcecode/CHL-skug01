@@ -60,4 +60,3 @@ public class CheckliteSolutionTest {
         System.out.println(checkliteSolution.checklite("ABEE"));
     }
 }
-
