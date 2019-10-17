@@ -70,7 +70,10 @@ public class CheckliteSolution {
     }
 	private Integer calculateLineItemCost(Entry<String, Integer> lineItem) {
 		if (catalogue.get(lineItem.getKey()).discount != null){
-			return null;
+			Discount itemDiscount = catalogue.get(lineItem.getKey()).getDiscount();
+			Integer subTotal = itemDiscount.getCost() * lineItem.getValue() / itemDiscount.getMultiple();
+			return subTotal + 
+					catalogue.get(lineItem.getKey()).getPrice() * lineItem.getValue() % itemDiscount.getMultiple();
 		}
 		else {
 			return lineItem.getValue() * catalogue.get(lineItem.getKey()).getPrice();
@@ -79,3 +82,4 @@ public class CheckliteSolution {
 	}
 
 }
+
