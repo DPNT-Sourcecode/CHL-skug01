@@ -69,11 +69,17 @@ public class CheckliteSolution {
         return basketTotal;
     }
 	private Integer calculateLineItemCost(Entry<String, Integer> lineItem) {
-		if (catalogue.get(lineItem.getKey()).discount != null){
+		if (catalogue.get(lineItem.getKey()).getDiscount() != null){
 			Discount itemDiscount = catalogue.get(lineItem.getKey()).getDiscount();
-			Integer subTotal = itemDiscount.getCost() * lineItem.getValue() / itemDiscount.getMultiple();
-			return subTotal + 
-					catalogue.get(lineItem.getKey()).getPrice() * lineItem.getValue() % itemDiscount.getMultiple();
+			Integer subTotal = 0;
+			if( lineItem.getValue() / itemDiscount.getMultiple() > 0 ) {
+				subTotal = itemDiscount.getCost() * lineItem.getValue() / itemDiscount.getMultiple();
+			}
+			if( (lineItem.getValue() % itemDiscount.getMultiple()) > 0 ) {
+			    subTotal +=
+					catalogue.get(lineItem.getKey()).getPrice() * (lineItem.getValue() % itemDiscount.getMultiple());
+			}
+			return subTotal;
 		}
 		else {
 			return lineItem.getValue() * catalogue.get(lineItem.getKey()).getPrice();
@@ -82,3 +88,4 @@ public class CheckliteSolution {
 	}
 
 }
+
