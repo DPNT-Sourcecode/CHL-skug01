@@ -119,9 +119,16 @@ public class CheckliteSolution {
 		}
 		return subTotal;
 	}
+	private Integer calculateLineItemDiscount(Entry<String,Integer> lineItem, Discount discount) {
+		Integer subTotal = 0;
+		if( lineItem.getValue() / discount.getMultiple() > 0 ) {
+			subTotal = discount.getCost() * ( lineItem.getValue() / discount.getMultiple());
+		}
+		if( (lineItem.getValue() % discount.getMultiple()) > 0 ) {
+		    subTotal +=
+				catalogue.get(lineItem.getKey()).getPrice() * (lineItem.getValue() % discount.getMultiple());
+		}
+		return subTotal;
+	}
 
 }
-
-
-
-
