@@ -47,8 +47,10 @@ public class CheckliteSolution {
 		public StockItem(String sku, Integer price, List<Discount> discounts) {
 			this.sku = sku;
 			this.price = price;
-			this.discounts = new ArrayList<>();
-			this.discounts.addAll(discounts);
+			if (discounts != null) {
+				this.discounts = new ArrayList<>();
+				this.discounts.addAll(discounts);
+			}
 			
 		}
 //		public String toString() {
@@ -135,5 +137,6 @@ public class CheckliteSolution {
 	}
 
 }
+
 
 
