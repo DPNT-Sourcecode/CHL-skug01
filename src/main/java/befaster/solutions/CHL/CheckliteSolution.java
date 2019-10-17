@@ -38,6 +38,11 @@ public class CheckliteSolution {
 			this.price = price;
 			this.discount = discount;
 		}
+		public String toString() {
+			return this.sku + ":" + this.price + ":" +
+							((this.discount != null) ? this.discount.getMultiple() + ":" + this.discount.getCost()
+							: "");
+		}
 	}
 	private Map<String,StockItem> catalogue = new HashMap<>();
 	
@@ -48,10 +53,11 @@ public class CheckliteSolution {
 		catalogue.put("D", new StockItem("D", 15, null));
 	}
 	
-	private Map<String,Integer> basket = new HashMap<>(); 
 	public Integer checklite(String skus) {
+		Map<String,Integer> basket = new HashMap<>();
         for (int i = 0; i < skus.length(); i++) {
         	String key = skus.substring(i,i+1);
+        	System.out.print(key);
         	if ( catalogue.containsKey(key)){
         		if (!basket.containsKey(key)) {
         			basket.put(key, Integer.valueOf(1));
@@ -86,3 +92,4 @@ public class CheckliteSolution {
 	}
 
 }
+
