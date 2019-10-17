@@ -109,15 +109,17 @@ public class CheckliteSolution {
 	}
 	private Integer calculateBestLineItemDiscount (Entry<String, Integer> lineItem) {
 		List<Discount> itemDiscounts = catalogue.get(lineItem.getKey()).getDiscounts();
-		Integer subTotal = 0;
-		if( lineItem.getValue() / itemDiscount.getMultiple() > 0 ) {
-			subTotal = itemDiscount.getCost() * ( lineItem.getValue() / itemDiscount.getMultiple());
+
+		//set basic price
+		Integer currentPrice = lineItem.getValue() * catalogue.get(lineItem.getKey()).getPrice();
+		
+		for (Discount discount : itemDiscounts) {
+			Integer discountedPrice = calculateLineItemDiscount(lineItem, discount);
+			if ( discountedPrice < currentPrice ) {
+				currentPrice = discountedPrice;
+			}
 		}
-		if( (lineItem.getValue() % itemDiscount.getMultiple()) > 0 ) {
-		    subTotal +=
-				catalogue.get(lineItem.getKey()).getPrice() * (lineItem.getValue() % itemDiscount.getMultiple());
-		}
-		return subTotal;
+		return currentPrice;
 	}
 	private Integer calculateLineItemDiscount(Entry<String,Integer> lineItem, Discount discount) {
 		Integer subTotal = 0;
@@ -132,3 +134,4 @@ public class CheckliteSolution {
 	}
 
 }
+
