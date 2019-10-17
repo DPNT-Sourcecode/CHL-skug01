@@ -48,13 +48,14 @@ public class CheckliteSolution {
         	}
         }
         Integer basketTotal = Integer.valueOf(0);
-        for( Entry lineItem : basket.entrySet()) {
-        	basketTotal += calculateLineItemCost((StockItem)lineItem);
+        for( Entry<String,Integer> lineItem : basket.entrySet()) {
+        	basketTotal += calculateLineItemCost(lineItem);
         }
         return basketTotal;
     }
-	private Integer calculateLineItemCost(Entry lineItem) {
+	private Integer calculateLineItemCost(Map.Entry<String,Integer>) {
 		// TODO Auto-generated method stub
 		return null;
 	}
 }
+
