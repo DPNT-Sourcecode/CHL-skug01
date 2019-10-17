@@ -4,8 +4,6 @@ import java.util.HashMap;
 import java.util.Map;
 import java.util.Map.Entry;
 
-import befaster.runner.SolutionNotImplementedException;
-
 public class CheckliteSolution {
 
 	private static class Discount {
@@ -88,4 +86,3 @@ public class CheckliteSolution {
 	}
 
 }
-
