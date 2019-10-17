@@ -54,4 +54,10 @@ public class CheckliteSolutionTest {
     public void test_() {
         assertEquals(checkliteSolution.checklite("_"),Integer.valueOf(-1));
     }
+    @Test
+    public void testABEE() {
+        assertEquals(checkliteSolution.checklite("ABEE"),Integer.valueOf(50+0+40+40));
+        System.out.println(checkliteSolution.checklite("ABEE"));
+    }
 }
+
