@@ -60,4 +60,3 @@ public class CheckliteSolutionTest {
         assertEquals(checkliteSolution.checklite("ABEE"),Integer.valueOf(50+0+40+40));
     }
 }
-
