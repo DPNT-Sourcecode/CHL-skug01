@@ -40,15 +40,16 @@ public class CheckliteSolution {
 			return price;
 		}
 		public List<Discount> getDiscounts() {
-			return discount;
+			return discounts;
 		}
 		private Integer price;
-		private List<Discount> discount;
+		private List<Discount> discounts;
 		public StockItem(String sku, Integer price, List<Discount> discounts) {
 			this.sku = sku;
 			this.price = price;
-			List<Discount> thisList = new ArrayList<>();
-			thisList.addAll(discounts);
+			this.discounts = new ArrayList<>();
+			this.discounts.addAll(discounts);
+			
 		}
 //		public String toString() {
 //			return this.sku + ":" + this.price + ":" +
@@ -134,4 +135,5 @@ public class CheckliteSolution {
 	}
 
 }
+
 
