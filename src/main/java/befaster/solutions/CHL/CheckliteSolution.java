@@ -48,13 +48,13 @@ public class CheckliteSolution {
 	
 	public CheckliteSolution() {
 		catalogue.put("A", new StockItem("A", 50, new Discount( 3, 130)));
-		catalogue.get("A").toString();
+		System.out.println(catalogue.get("A").toString());
 		catalogue.put("B", new StockItem("B", 30, new Discount( 2, 45)));
-		catalogue.get("B").toString();
+		System.out.println(catalogue.get("B").toString());
 		catalogue.put("C", new StockItem("C", 20, null));
-		catalogue.get("C").toString();
+		System.out.println(catalogue.get("C").toString());
 		catalogue.put("D", new StockItem("D", 15, null));
-		catalogue.get("D").toString();
+		System.out.println(catalogue.get("D").toString());
 	}
 	
 	public Integer checklite(String skus) {
@@ -96,5 +96,6 @@ public class CheckliteSolution {
 	}
 
 }
+
 
 
