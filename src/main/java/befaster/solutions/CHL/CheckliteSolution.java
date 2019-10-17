@@ -11,7 +11,7 @@ public class CheckliteSolution {
 	private static class Discount {
 		private Integer multiple;
 		private Integer cost;
-		private String freebee;
+		private String freebee = "";
 		public Integer getMultiple() {
 			return multiple;
 		}
@@ -108,8 +108,8 @@ public class CheckliteSolution {
 		else {
 			return lineItem.getValue() * catalogue.get(lineItem.getKey()).getPrice();
 		}
-			
 	}
+	
 	private Integer calculateBestLineItemDiscount (Entry<String, Integer> lineItem) {
 		List<Discount> itemDiscounts = catalogue.get(lineItem.getKey()).getDiscounts();
 
@@ -117,9 +117,12 @@ public class CheckliteSolution {
 		Integer currentPrice = lineItem.getValue() * catalogue.get(lineItem.getKey()).getPrice();
 		
 		for (Discount discount : itemDiscounts) {
-			Integer discountedPrice = calculateLineItemDiscount(lineItem, discount);
-			if ( discountedPrice < currentPrice ) {
-				currentPrice = discountedPrice;
+			if( discount.getFreebee().isEmpty())
+			{
+				Integer discountedPrice = calculateLineItemDiscount(lineItem, discount);
+				if ( discountedPrice < currentPrice ) {
+					currentPrice = discountedPrice;
+				}
 			}
 		}
 		return currentPrice;
@@ -137,3 +140,4 @@ public class CheckliteSolution {
 	}
 
 }
+
