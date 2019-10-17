@@ -10,17 +10,26 @@ public class CheckliteSolution {
 
 	private static class Discount {
 		private Integer multiple;
+		private Integer cost;
+		private String freebee;
 		public Integer getMultiple() {
 			return multiple;
 		}
 		public Integer getCost() {
 			return cost;
 		}
-		private Integer cost;
+		public String getFreebee() {
+			return freebee;
+		}
 		public Discount(Integer multiple, Integer cost) {
 			this.multiple = multiple;
 			this.cost = cost;
 		}
+		public Discount(Integer multiple, Integer cost, String freebee) {
+			this(multiple,cost);
+			this.freebee = freebee;
+		}
+		
 	}
 	private static class StockItem{
 		private String sku;
@@ -52,14 +61,19 @@ public class CheckliteSolution {
 		List<Discount> aDiscounts = new ArrayList<>();
 		aDiscounts.add(new Discount( 3, 130));
 		aDiscounts.add(new Discount( 5, 200));
-		catalogue.put("A", new StockItem("A", 50, aDiscounts)));
+		catalogue.put("A", new StockItem("A", 50, aDiscounts));
 		//System.out.println(catalogue.get("A").toString());
-		catalogue.put("B", new StockItem("B", 30, new Discount( 2, 45)));
+		List<Discount> bDiscounts = new ArrayList<>();
+		bDiscounts.add(new Discount( 2, 45));
+		catalogue.put("B", new StockItem("B", 30, bDiscounts));
 		//System.out.println(catalogue.get("B").toString());
 		catalogue.put("C", new StockItem("C", 20, null));
 		//System.out.println(catalogue.get("C").toString());
 		catalogue.put("D", new StockItem("D", 15, null));
 		//System.out.println(catalogue.get("D").toString());
+		List<Discount> eDiscounts = new ArrayList<>();
+		aDiscounts.add(new Discount(2, 0, "B"));
+		catalogue.put("E", new StockItem("E", 40, null));
 	}
 	
 	public Integer checklite(String skus) {
@@ -85,24 +99,28 @@ public class CheckliteSolution {
         return basketTotal;
     }
 	private Integer calculateLineItemCost(Entry<String, Integer> lineItem) {
-		if (catalogue.get(lineItem.getKey()).getDiscount() != null){
-			Discount itemDiscount = catalogue.get(lineItem.getKey()).getDiscount();
-			Integer subTotal = 0;
-			if( lineItem.getValue() / itemDiscount.getMultiple() > 0 ) {
-				subTotal = itemDiscount.getCost() * ( lineItem.getValue() / itemDiscount.getMultiple());
-			}
-			if( (lineItem.getValue() % itemDiscount.getMultiple()) > 0 ) {
-			    subTotal +=
-					catalogue.get(lineItem.getKey()).getPrice() * (lineItem.getValue() % itemDiscount.getMultiple());
-			}
-			return subTotal;
+		if (catalogue.get(lineItem.getKey()).getDiscounts() != null){
+			return calculateBestLineItemDiscount (lineItem);
 		}
 		else {
 			return lineItem.getValue() * catalogue.get(lineItem.getKey()).getPrice();
 		}
 			
 	}
+	private Integer calculateBestLineItemDiscount (Entry<String, Integer> lineItem) {
+		List<Discount> itemDiscounts = catalogue.get(lineItem.getKey()).getDiscounts();
+		Integer subTotal = 0;
+		if( lineItem.getValue() / itemDiscount.getMultiple() > 0 ) {
+			subTotal = itemDiscount.getCost() * ( lineItem.getValue() / itemDiscount.getMultiple());
+		}
+		if( (lineItem.getValue() % itemDiscount.getMultiple()) > 0 ) {
+		    subTotal +=
+				catalogue.get(lineItem.getKey()).getPrice() * (lineItem.getValue() % itemDiscount.getMultiple());
+		}
+		return subTotal;
+	}
 
 }
+
 
 
