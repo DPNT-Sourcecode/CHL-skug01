@@ -29,6 +29,9 @@ public class CheckliteSolutionTest {
     public void testBB() {
         assertEquals(checkliteSolution.checklite("BB"),Integer.valueOf(45));
     }
+    public void testBBB() {
+        assertEquals(checkliteSolution.checklite("BBB"),Integer.valueOf(75));
+    }
     @Test
     public void testC() {
         assertEquals(checkliteSolution.checklite("C"),Integer.valueOf(20));
@@ -43,5 +46,6 @@ public class CheckliteSolutionTest {
         //System.out.println(checkliteSolution.checklite("ABABCD"));
     }
 }
+
 
 
