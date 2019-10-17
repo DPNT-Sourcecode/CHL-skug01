@@ -83,7 +83,7 @@ public class CheckliteSolution {
 			Discount itemDiscount = catalogue.get(lineItem.getKey()).getDiscount();
 			Integer subTotal = 0;
 			if( lineItem.getValue() / itemDiscount.getMultiple() > 0 ) {
-				subTotal = itemDiscount.getCost() * lineItem.getValue() / itemDiscount.getMultiple();
+				subTotal = itemDiscount.getCost() * ( lineItem.getValue() / itemDiscount.getMultiple());
 			}
 			if( (lineItem.getValue() % itemDiscount.getMultiple()) > 0 ) {
 			    subTotal +=
@@ -98,6 +98,7 @@ public class CheckliteSolution {
 	}
 
 }
+
 
 
 
