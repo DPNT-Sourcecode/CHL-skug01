@@ -21,4 +21,13 @@ public class CheckliteSolutionTest {
     public void testA() {
         assertEquals(checkliteSolution.checklite("A"),Integer.valueOf(50));
     }
+    @Test
+    public void testB() {
+        assertEquals(checkliteSolution.checklite("B"),Integer.valueOf(30));
+    }
+    @Test
+    public void testBB() {
+        assertEquals(checkliteSolution.checklite("BB"),Integer.valueOf(45));
+    }
 }
+
