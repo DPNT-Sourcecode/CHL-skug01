@@ -43,12 +43,11 @@ public class CheckliteSolution {
 			return discounts;
 		}
 		private Integer price;
-		private List<Discount> discounts;
+		private List<Discount> discounts = new ArrayList<>();
 		public StockItem(String sku, Integer price, List<Discount> discounts) {
 			this.sku = sku;
 			this.price = price;
 			if (discounts != null) {
-				this.discounts = new ArrayList<>();
 				this.discounts.addAll(discounts);
 			}
 			
@@ -121,7 +120,7 @@ public class CheckliteSolution {
 	}
 
 	private Integer calculateLineItemCost(Entry<String, Integer> lineItem, Map<String, Integer> freebeeDiscounts) {
-		if (catalogue.get(lineItem.getKey()).getDiscounts() != null){
+		if (!catalogue.get(lineItem.getKey()).getDiscounts().isEmpty() ){
 			return calculateBestLineItemDiscount (lineItem, freebeeDiscounts);
 		}
 		else {
@@ -165,6 +164,7 @@ public class CheckliteSolution {
 	}
 
 }
+
 
 
 
