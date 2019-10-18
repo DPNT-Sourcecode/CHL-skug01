@@ -133,10 +133,10 @@ public class CheckliteSolution {
 		List<Discount> itemDiscounts = catalogue.get(lineItem.getKey()).getDiscounts();
 		//set basic price
 		Integer currentPrice = lineItem.getValue() * catalogue.get(lineItem.getKey()).getPrice();
-		
+		Integer remainingItems = lineItem.getValue();
 		if ( freebeeDiscounts.containsKey(lineItem.getKey()))
 		{
-			Integer remainingItems = lineItem.getValue() - freebeeDiscounts.get(lineItem.getKey());
+			remainingItems = lineItem.getValue() - freebeeDiscounts.get(lineItem.getKey());
 			currentPrice = remainingItems * catalogue.get(lineItem.getKey()).getPrice();
 		}
 		
@@ -164,7 +164,3 @@ public class CheckliteSolution {
 	}
 
 }
-
-
-
-
