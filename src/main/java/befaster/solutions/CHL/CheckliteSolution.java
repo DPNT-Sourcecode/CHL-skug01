@@ -140,12 +140,11 @@ public class CheckliteSolution {
 		for (Discount discount : itemDiscounts) {
 			if( discount.getFreeSku().isEmpty())
 			{
-				System.out.print(remainingItems);
 				Integer discountedIncrement = calculateLineItemDiscount(discount, remainingItems);
-				System.out.print(remainingItems);
+				remainingItems = calculateLineItemsRemaining(discount, remainingItems);
+//				System.out.println(remainingItems);
 				currentPrice += discountedIncrement;
-				System.out.print(currentPrice);
-				System.out.print(discountedIncrement);
+//				System.out.println(discountedIncrement);
 			}
 		}
 		Integer fullPricedItemCost = catalogue.get(lineItem.getKey()).getPrice() * remainingItems;
@@ -160,14 +159,9 @@ public class CheckliteSolution {
 		remainingItems =  remainingItems % discount.getMultiple();
 		return subTotal;
 	}
+	private Integer calculateLineItemsRemaining(Discount discount, Integer remainingItems) {
+		return remainingItems =  remainingItems % discount.getMultiple();
+	}
 
 	
 }
-
-
-
-
-
-
-
-
