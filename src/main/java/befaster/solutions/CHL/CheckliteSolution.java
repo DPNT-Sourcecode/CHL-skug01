@@ -61,8 +61,8 @@ public class CheckliteSolution {
 	private Map<String,StockItem> catalogue = new HashMap<>();
 	public CheckliteSolution() {
 		List<Discount> aDiscounts = new ArrayList<>();
-		aDiscounts.add(new Discount( 3, 130));
 		aDiscounts.add(new Discount( 5, 200));
+		aDiscounts.add(new Discount( 3, 130));
 		catalogue.put("A", new StockItem("A", 50, aDiscounts));
 		//System.out.println(catalogue.get("A").toString());
 		List<Discount> bDiscounts = new ArrayList<>();
@@ -164,3 +164,4 @@ public class CheckliteSolution {
 	}
 
 }
+
