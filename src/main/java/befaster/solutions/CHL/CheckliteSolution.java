@@ -64,24 +64,43 @@ public class CheckliteSolution {
 		List<Discount> aDiscounts = new ArrayList<>();
 		aDiscounts.add(new Discount( 5, 200));
 		aDiscounts.add(new Discount( 3, 130));
-//		System.out.println(aDiscounts.get(0).getMultiple());
-//		System.out.println(aDiscounts.get(1).getMultiple());
 		catalogue.put("A", new StockItem("A", 50, aDiscounts));
-		//System.out.println(catalogue.get("A").toString());
 		List<Discount> bDiscounts = new ArrayList<>();
 		bDiscounts.add(new Discount( 2, 45));
 		catalogue.put("B", new StockItem("B", 30, bDiscounts));
-		//System.out.println(catalogue.get("B").toString());
 		catalogue.put("C", new StockItem("C", 20, null));
-		//System.out.println(catalogue.get("C").toString());
 		catalogue.put("D", new StockItem("D", 15, null));
-		//System.out.println(catalogue.get("D").toString());
 		List<Discount> eDiscounts = new ArrayList<>();
 		eDiscounts.add(new Discount(2, 0, "B"));
 		catalogue.put("E", new StockItem("E", 40, eDiscounts));
 		List<Discount> fDiscounts = new ArrayList<>();
 		fDiscounts.add(new Discount(3, 0, "F"));
 		catalogue.put("F", new StockItem("F", 10, fDiscounts));
+		catalogue.put("G", new StockItem("G", 20, null));
+		List<Discount> discounts = new ArrayList<>();
+		discounts.add(new Discount(5, 45));
+		discounts.add(new Discount(10, 80));
+		catalogue.put("H", new StockItem("H", 10, discounts));
+		discounts.clear();
+		catalogue.put("I", new StockItem("I", 35, null));
+		catalogue.put("J", new StockItem("J", 60, null));
+		discounts.add(new Discount(5, 45));
+		discounts.add(new Discount(10, 80));
+		catalogue.put("K", new StockItem("K", 80, discounts));
+		discounts.clear();
+		catalogue.put("M", new StockItem("M", 15, null));
+		discounts.add(new Discount(3, 0, "M"));
+		catalogue.put("N", new StockItem("N", 80, discounts));
+		discounts.clear();
+		catalogue.put("D", new StockItem("D", 15, null));
+		catalogue.put("D", new StockItem("D", 15, null));
+		catalogue.put("D", new StockItem("D", 15, null));
+		catalogue.put("D", new StockItem("D", 15, null));
+		catalogue.put("D", new StockItem("D", 15, null));
+		catalogue.put("D", new StockItem("D", 15, null));
+		catalogue.put("D", new StockItem("D", 15, null));
+		catalogue.put("D", new StockItem("D", 15, null));
+		
 	}
 	
 	public Integer checklite(String skus) {
@@ -168,3 +187,4 @@ public class CheckliteSolution {
 
 	
 }
+
