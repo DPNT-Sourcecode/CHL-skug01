@@ -92,14 +92,29 @@ public class CheckliteSolution {
 		discounts.add(new Discount(3, 0, "M"));
 		catalogue.put("N", new StockItem("N", 80, discounts));
 		discounts.clear();
-		catalogue.put("D", new StockItem("D", 15, null));
-		catalogue.put("D", new StockItem("D", 15, null));
-		catalogue.put("D", new StockItem("D", 15, null));
-		catalogue.put("D", new StockItem("D", 15, null));
-		catalogue.put("D", new StockItem("D", 15, null));
-		catalogue.put("D", new StockItem("D", 15, null));
-		catalogue.put("D", new StockItem("D", 15, null));
-		catalogue.put("D", new StockItem("D", 15, null));
+		catalogue.put("O", new StockItem("O", 10, null));
+		discounts.add(new Discount(5,200));
+		catalogue.put("P", new StockItem("P", 50, discounts));
+		discounts.clear();
+		discounts.add(new Discount(3,80));
+		catalogue.put("Q", new StockItem("Q", 30, discounts));
+		discounts.clear();
+		discounts.add(new Discount(3, 0, "Q"));
+		catalogue.put("R", new StockItem("R", 50, discounts));
+		discounts.clear();
+		catalogue.put("S", new StockItem("S", 30, null));
+		catalogue.put("T", new StockItem("T", 20, null));
+		discounts.add(new Discount(4,0,"U"));
+		catalogue.put("U", new StockItem("U", 40, discounts));
+		discounts.clear();
+		discounts.add(new Discount(3,130));
+		discounts.add(new Discount(2,90));
+		catalogue.put("V", new StockItem("V", 50, discounts));
+		discounts.clear();
+		catalogue.put("W", new StockItem("W", 20, null));
+		catalogue.put("X", new StockItem("X", 90, null));
+		catalogue.put("Y", new StockItem("Y", 10, null));
+		catalogue.put("Z", new StockItem("Z", 50, null));
 		
 	}
 	
@@ -187,4 +202,5 @@ public class CheckliteSolution {
 
 	
 }
+
 
