@@ -78,19 +78,19 @@ public class CheckliteSolution {
 		catalogue.put("F", new StockItem("F", 10, fDiscounts));
 		catalogue.put("G", new StockItem("G", 20, null));
 		List<Discount> discounts = new ArrayList<>();
-		discounts.add(new Discount(5, 45));
 		discounts.add(new Discount(10, 80));
+		discounts.add(new Discount(5, 45));
 		catalogue.put("H", new StockItem("H", 10, discounts));
 		discounts.clear();
 		catalogue.put("I", new StockItem("I", 35, null));
 		catalogue.put("J", new StockItem("J", 60, null));
-		discounts.add(new Discount(5, 45));
-		discounts.add(new Discount(10, 80));
+		discounts.add(new Discount(2, 150));
 		catalogue.put("K", new StockItem("K", 80, discounts));
 		discounts.clear();
+		catalogue.put("L", new StockItem("L", 90, null));
 		catalogue.put("M", new StockItem("M", 15, null));
 		discounts.add(new Discount(3, 0, "M"));
-		catalogue.put("N", new StockItem("N", 80, discounts));
+		catalogue.put("N", new StockItem("N", 40, discounts));
 		discounts.clear();
 		catalogue.put("O", new StockItem("O", 10, null));
 		discounts.add(new Discount(5,200));
@@ -202,5 +202,6 @@ public class CheckliteSolution {
 
 	
 }
+
 
 
