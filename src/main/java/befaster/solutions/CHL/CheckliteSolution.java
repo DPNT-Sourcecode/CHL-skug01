@@ -121,12 +121,7 @@ public class CheckliteSolution {
 	}
 
 	private Integer calculateLineItemCost(Entry<String, Integer> lineItem, Map<String, Integer> freebeeDiscounts) {
-		if (!catalogue.get(lineItem.getKey()).getDiscounts().isEmpty() ){
 			return calculateBestLineItemDiscount (lineItem, freebeeDiscounts);
-		}
-		else {
-			return lineItem.getValue() * catalogue.get(lineItem.getKey()).getPrice();
-		}
 	}
 	
 	private Integer calculateBestLineItemDiscount (Entry<String, Integer> lineItem, 
@@ -162,6 +157,7 @@ public class CheckliteSolution {
 
 	
 }
+
 
 
 
