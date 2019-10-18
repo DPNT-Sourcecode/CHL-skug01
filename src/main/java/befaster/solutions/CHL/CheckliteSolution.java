@@ -144,6 +144,8 @@ public class CheckliteSolution {
 				Integer discountedIncrement = calculateLineItemDiscount(discount, remainingItems);
 				System.out.print(remainingItems);
 				currentPrice += discountedIncrement;
+				System.out.print(currentPrice);
+				System.out.print(discountedIncrement);
 			}
 		}
 		Integer fullPricedItemCost = catalogue.get(lineItem.getKey()).getPrice() * remainingItems;
@@ -161,6 +163,7 @@ public class CheckliteSolution {
 
 	
 }
+
 
 
 
