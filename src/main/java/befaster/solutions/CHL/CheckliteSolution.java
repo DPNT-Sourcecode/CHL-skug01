@@ -137,7 +137,7 @@ public class CheckliteSolution {
 		Integer remainingItems = lineItem.getValue();
 		if ( freebeeDiscounts.containsKey(lineItem.getKey()))
 		{
-			remainingItems = lineItem.getValue() - freebeeDiscounts.get(lineItem.getKey());
+			remainingItems = remainingItems - freebeeDiscounts.get(lineItem.getKey());
 		}
 		
 		for (Discount discount : itemDiscounts) {
@@ -147,7 +147,9 @@ public class CheckliteSolution {
 				currentPrice += discountedIncrement;
 			}
 		}
-		return currentPrice;
+		Integer fullPricedItemCost = catalogue.get(lineItem.getKey()).getPrice() * remainingItems;
+
+		return currentPrice + fullPricedItemCost;
 	}
 	private Integer calculateLineItemDiscount(Entry<String,Integer> lineItem, Discount discount, Integer remainingItems) {
 		Integer subTotal = 0;
@@ -160,5 +162,6 @@ public class CheckliteSolution {
 
 	
 }
+
 
 
