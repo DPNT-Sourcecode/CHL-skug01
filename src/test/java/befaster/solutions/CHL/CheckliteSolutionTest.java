@@ -51,6 +51,15 @@ public class CheckliteSolutionTest {
         System.out.println(checkliteSolution.checklite("AAAAA"));
     }
     @Test
+    public void testAAAAAA() {
+        assertEquals(checkliteSolution.checklite("AAAAAA"),Integer.valueOf(200+50));
+        System.out.println(checkliteSolution.checklite("AAAAAA"));
+    }
+    public void testAAAAAAAA() {
+        assertEquals(checkliteSolution.checklite("AAAAAAAA"),Integer.valueOf(200+130));
+        System.out.println(checkliteSolution.checklite("AAAAAAAA"));
+    }
+    @Test
     public void test_() {
         assertEquals(checkliteSolution.checklite("_"),Integer.valueOf(-1));
     }
@@ -60,3 +69,4 @@ public class CheckliteSolutionTest {
         assertEquals(checkliteSolution.checklite("ABEE"),Integer.valueOf(50+0+40+40));
     }
 }
+
