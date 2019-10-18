@@ -79,6 +79,9 @@ public class CheckliteSolution {
 		List<Discount> eDiscounts = new ArrayList<>();
 		eDiscounts.add(new Discount(2, 0, "B"));
 		catalogue.put("E", new StockItem("E", 40, eDiscounts));
+		List<Discount> fDiscounts = new ArrayList<>();
+		fDiscounts.add(new Discount(3, 0, "F"));
+		catalogue.put("F", new StockItem("F", 10, fDiscounts));
 	}
 	
 	public Integer checklite(String skus) {
@@ -165,3 +168,4 @@ public class CheckliteSolution {
 
 	
 }
+
