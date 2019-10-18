@@ -48,7 +48,7 @@ public class CheckliteSolution {
 			this.sku = sku;
 			this.price = price;
 			if (discounts != null) {
-				this.discounts.addAll(discounts);
+				this.discounts.addAll(discounts);				
 			}
 			
 		}
@@ -64,6 +64,8 @@ public class CheckliteSolution {
 		List<Discount> aDiscounts = new ArrayList<>();
 		aDiscounts.add(new Discount( 5, 200));
 		aDiscounts.add(new Discount( 3, 130));
+//		System.out.println(aDiscounts.get(0).getMultiple());
+//		System.out.println(aDiscounts.get(1).getMultiple());
 		catalogue.put("A", new StockItem("A", 50, aDiscounts));
 		//System.out.println(catalogue.get("A").toString());
 		List<Discount> bDiscounts = new ArrayList<>();
@@ -157,6 +159,7 @@ public class CheckliteSolution {
 
 	
 }
+
 
 
 
