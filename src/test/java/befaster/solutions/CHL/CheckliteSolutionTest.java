@@ -74,5 +74,3 @@ public class CheckliteSolutionTest {
         assertEquals(checkliteSolution.checklite("ABAAABAEE"),Integer.valueOf(200+0+30+40+40));
     }
 }
-
-
