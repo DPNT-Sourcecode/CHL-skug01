@@ -83,4 +83,10 @@ public class CheckliteSolutionTest {
     	System.out.println(checkliteSolution.checklite("FFF"));
         assertEquals(checkliteSolution.checklite("FFF"),Integer.valueOf(10+10+0));
     }
+    @Test
+    public void testRRRQQQ() {
+    	System.out.println(checkliteSolution.checklite("RRRQQQ"));
+        assertEquals(checkliteSolution.checklite("RRRQQQ"),Integer.valueOf(50+50+50+30+30));
+    }
 }
+
