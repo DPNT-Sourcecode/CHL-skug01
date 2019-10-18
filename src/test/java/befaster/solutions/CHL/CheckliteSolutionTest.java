@@ -84,4 +84,3 @@ public class CheckliteSolutionTest {
         assertEquals(checkliteSolution.checklite("FFF"),Integer.valueOf(10+10+0));
     }
 }
-
