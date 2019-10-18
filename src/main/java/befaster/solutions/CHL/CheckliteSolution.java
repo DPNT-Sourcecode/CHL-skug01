@@ -143,7 +143,7 @@ public class CheckliteSolution {
 		for (Discount discount : itemDiscounts) {
 			if( discount.getFreeSku().isEmpty())
 			{
-				Integer discountedIncrement = calculateLineItemDiscount(lineItem, discount, remainingItems);
+				Integer discountedIncrement = calculateLineItemDiscount(discount, remainingItems);
 				currentPrice += discountedIncrement;
 			}
 		}
@@ -151,17 +151,18 @@ public class CheckliteSolution {
 
 		return currentPrice + fullPricedItemCost;
 	}
-	private Integer calculateLineItemDiscount(Entry<String,Integer> lineItem, Discount discount, Integer remainingItems) {
+	private Integer calculateLineItemDiscount(Discount discount, Integer remainingItems) {
 		Integer subTotal = 0;
-		if( lineItem.getValue() / discount.getMultiple() > 0 ) {
-			subTotal = discount.getCost() * ( lineItem.getValue() / discount.getMultiple());
+		if( remainingItems / discount.getMultiple() > 0 ) {
+			subTotal = discount.getCost() * ( remainingItems / discount.getMultiple());
 		}
-		remainingItems =  (lineItem.getValue() % discount.getMultiple());
+		remainingItems =  remainingItems % discount.getMultiple();
 		return subTotal;
 	}
 
 	
 }
+
 
 
 
