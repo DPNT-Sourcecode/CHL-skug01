@@ -60,6 +60,7 @@ public class CheckliteSolution {
 	}
 	private Map<String,StockItem> catalogue = new HashMap<>();
 	public CheckliteSolution() {
+		// assume best discounts are listed first
 		List<Discount> aDiscounts = new ArrayList<>();
 		aDiscounts.add(new Discount( 5, 200));
 		aDiscounts.add(new Discount( 3, 130));
@@ -132,36 +133,32 @@ public class CheckliteSolution {
 												Map<String, Integer> freebeeDiscounts) {
 		List<Discount> itemDiscounts = catalogue.get(lineItem.getKey()).getDiscounts();
 		//set basic price
-		Integer currentPrice = lineItem.getValue() * catalogue.get(lineItem.getKey()).getPrice();
+		Integer currentPrice = 0; //= lineItem.getValue() * catalogue.get(lineItem.getKey()).getPrice();
 		Integer remainingItems = lineItem.getValue();
 		if ( freebeeDiscounts.containsKey(lineItem.getKey()))
 		{
 			remainingItems = lineItem.getValue() - freebeeDiscounts.get(lineItem.getKey());
-			currentPrice = remainingItems * catalogue.get(lineItem.getKey()).getPrice();
 		}
 		
 		for (Discount discount : itemDiscounts) {
 			if( discount.getFreeSku().isEmpty())
 			{
-				Integer discountedPrice = calculateLineItemDiscount(lineItem, discount);
-				if ( discountedPrice < currentPrice ) {
-					currentPrice = discountedPrice;
-				}
+				Integer discountedIncrement = calculateLineItemDiscount(lineItem, discount, remainingItems);
+				currentPrice += discountedIncrement;
 			}
 		}
 		return currentPrice;
 	}
-	private Integer calculateLineItemDiscount(Entry<String,Integer> lineItem, Discount discount) {
+	private Integer calculateLineItemDiscount(Entry<String,Integer> lineItem, Discount discount, Integer remainingItems) {
 		Integer subTotal = 0;
 		if( lineItem.getValue() / discount.getMultiple() > 0 ) {
 			subTotal = discount.getCost() * ( lineItem.getValue() / discount.getMultiple());
 		}
-		if( (lineItem.getValue() % discount.getMultiple()) > 0 ) {
-		    subTotal +=
-				catalogue.get(lineItem.getKey()).getPrice() * (lineItem.getValue() % discount.getMultiple());
-		}
+		remainingItems =  (lineItem.getValue() % discount.getMultiple());
 		return subTotal;
 	}
 
+	
 }
+
 
