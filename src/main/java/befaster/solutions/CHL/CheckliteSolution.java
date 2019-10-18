@@ -140,7 +140,9 @@ public class CheckliteSolution {
 		for (Discount discount : itemDiscounts) {
 			if( discount.getFreeSku().isEmpty())
 			{
+				System.out.print(remainingItems);
 				Integer discountedIncrement = calculateLineItemDiscount(discount, remainingItems);
+				System.out.print(remainingItems);
 				currentPrice += discountedIncrement;
 			}
 		}
@@ -159,6 +161,7 @@ public class CheckliteSolution {
 
 	
 }
+
 
 
 
